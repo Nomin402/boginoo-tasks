@@ -1,10 +1,7 @@
 import React from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 
-
-export const HomeDefault = () => {
-
-
+export const Login = () => {
     return (
         
         <Layout>
@@ -15,7 +12,7 @@ export const HomeDefault = () => {
                     <IconEndBracket />
                 </div>
                 <div className='font-lobster c-primary fs-56 lh-70 text-center'>
-                    Boginoo
+                    Boginoo Login 
                 </div>
                 <div className='mt-5 flex justify-center items-center'>
                     <Input placeholder='https://www.web-huudas.mn' className='input h-5 w-8'/>

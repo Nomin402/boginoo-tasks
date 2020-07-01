@@ -6,6 +6,8 @@
 
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 // UBUNTU FONT
 
@@ -120,11 +122,11 @@
 
 
 .font-lobster {
-    font-family: Lobster;
+    font-family: 'Lobster Two', cursive;
 }
 
 .font-ubuntu {
-    font-family: Ubuntu;
+    font-family: 'Ubuntu';
 }
 
 .normal {
@@ -142,3 +144,15 @@
     Жишээ нь:
         className='fs-16 lh-20'
 */
+
+@for $i from 1 through 80 {
+    .fs-#{$i} {
+        font-size: $i+px;
+    }
+}
+
+@for $i from 1 through 80 {
+    .lh-#{$i} {
+        line-height: $i+px;
+    }
+}

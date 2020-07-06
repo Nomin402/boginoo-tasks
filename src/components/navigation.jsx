@@ -3,7 +3,7 @@ import { Button } from './';
 import {useHistory} from "react-router-dom"
 import {useLocation} from 'react-router-dom'
 
-export const Navigation = (props) => {
+export const Navigation = ({user}) => {
     /* 
         https://boginoo.firebaseapp.com/navigation
 
@@ -13,7 +13,6 @@ export const Navigation = (props) => {
     */
 
     let history = useHistory()
-    console.log(history)
 
     let location = useLocation();
     
@@ -28,7 +27,7 @@ export const Navigation = (props) => {
             <div className='font-ubuntu fs-20 lh-23 bold c-primary'>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</div>
             {location.pathname !== '/login' &&
             <Button className='font-ubuntu fs-20 lh-23 bold c-default ph-4 ml-4 b-primary' onClick={toLogin} id='test'>Нэвтрэх</Button>}
-            
+            <div>{user ? user.email : 'No User'}</div>
         </div>
     </>);
 };

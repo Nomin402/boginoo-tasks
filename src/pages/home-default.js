@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
-
+import firebase from 'firebase';
+import app from '../firebase';
 
 export const HomeDefault = () => {
+    const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        const subsribe = firebase.auth(app).onAuthStateChanged((user) => {
+            if (user) {
+                setUser(user);
+            }
+        })
+
+        return () => subsribe();
+    }, [])
 
     return (
         
-        <Layout>
+        <Layout user={user}>
             <div className='h100 flex flex-col justify-center items-center'>
                 <div className='flex justify-center items-center'>
                     <IconStartBracket />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { HomeDefault, Login, SignUp, PassRecover} from './pages';
 import {
     BrowserRouter as Router,
@@ -8,6 +8,7 @@ import {
 import './style/main.scss';
 
 const App = () => {
+
     return (
         <Router>
             <Switch>

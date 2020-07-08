@@ -11,7 +11,8 @@ export const SignUp = () => {
     const history = useHistory()
     
     const [user, setUser] = useState();
-    const [state, setState] = useState({email: '', password: ''});
+    const [state, setState] = useState({name: '', email: '', password: ''});
+    const [name, setName] = useState('')
 
     useEffect(() => {
         const subsribe = firebase.auth(app).onAuthStateChanged((user) => {
@@ -25,8 +26,22 @@ export const SignUp = () => {
 
     const signUp = async () => {
         console.log(state);
-        await firebase.auth(app).createUserWithEmailAndPassword(state.email, state.password);
+        let uid = await firebase.auth(app).createUserWithEmailAndPassword(state.email, state.password).then((auth) => auth.user.uid);
+        console.log(uid)
+        let haha = await firebase.firestore().collection('users').doc(uid).set({
+            displayName: state.name,
+            email: state.email
+        })
+        console.log(haha)
     }
+
+    useEffect(() => {
+        if (user) {
+            firebase.firestore().collection('users').doc(user.uid).onSnapshot((d) => {
+                setName(d.data().displayName)
+            })
+        }
+    })
 
     return (
         <Layout>
@@ -40,6 +55,10 @@ export const SignUp = () => {
                     Boginoo
                 </div>
                 <div className='font-ubuntu c-primary fs-20 lh-23 text-center mt-4 bold'>Бүртгүүлэх</div>
+                <div className="mt-4">
+                    <div className='font-ubuntu ph-4 fs-12 lh-18'>Нэр</div>
+                    <Input placeholder='Khan' className='input h-5 w-8 mt-2 ph-4' value={state.name} onChange={(e) => setState({...state, name: e.target.value})}/>
+                </div>
                 <div className="mt-4">
                     <div className='font-ubuntu ph-4 fs-12 lh-18'>Цахим хаяг</div>
                     <Input placeholder='name@mail.domain' className='input h-5 w-8 mt-2 ph-4' value={state.email} onChange={(e) => setState({...state, email: e.target.value})}/>

@@ -4,10 +4,11 @@ import {useHistory} from 'react-router-dom'
 import {useState} from 'react'
 import {useEffect} from'react'
 import firebase from 'firebase';
-import app from '../firebase';
+import {useFirebase} from '../firebase'
 
 export const Login = () => {
-    console.log(app)
+    const {app} = useFirebase(firebase)
+
     const history = useHistory()
 
     const toHome = () => {

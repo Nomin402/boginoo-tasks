@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import {useState, useEffect} from 'react'
 
 var config = {
     apiKey: "AIzaSyAmiJZnf4nf7SVoXj2kuEpR3453thF8ksk",
@@ -11,6 +12,17 @@ var config = {
     measurementId: "G-Q21J567PH7"
 };
 
-const app = firebase.initializeApp(config)
+export const useFirebase = () => {
+    let [state, setState] = useState({firebase})
 
-export default app;
+    useEffect(() => {
+        let app;
+        if (!firebase.apps.length) {
+            app = firebase.initializeApp(config)
+        }
+        let firestore = firebase.firestore(app)
+        let auth = firebase.auth(app)
+        setState({firebase, auth, app, firestore})
+    }, [])
+    return state;
+}

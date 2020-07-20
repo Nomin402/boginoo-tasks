@@ -4,11 +4,12 @@ import {useHistory} from 'react-router-dom'
 import {useState} from 'react'
 import {useEffect} from'react'
 import firebase from 'firebase';
-import app from '../firebase';
+import {useFirebase} from '../firebase';
 
 export const SignUp = () => {
     
     const history = useHistory()
+    const {app, firestore, auth} = useFirebase(firebase)
     
     const [user, setUser] = useState();
     const [state, setState] = useState({name: '', email: '', password: ''});
@@ -24,6 +25,8 @@ export const SignUp = () => {
         return () => subsribe();
     }, [])
 
+    
+
     const signUp = async () => {
         console.log(state);
         let uid = await firebase.auth(app).createUserWithEmailAndPassword(state.email, state.password).then((auth) => auth.user.uid);
@@ -32,7 +35,7 @@ export const SignUp = () => {
             displayName: state.name,
             email: state.email
         })
-        console.log(haha)
+        console.log(haha.displayName)
     }
 
     useEffect(() => {
@@ -41,7 +44,7 @@ export const SignUp = () => {
                 setName(d.data().displayName)
             })
         }
-    })
+    }, [user])
 
     return (
         <Layout>

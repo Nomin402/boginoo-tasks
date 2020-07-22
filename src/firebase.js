@@ -26,3 +26,7 @@ export const useFirebase = () => {
     }, [])
     return state;
 }
+// export const createDocumentForUrl = ({path, body}) => {
+//     const {firestore } = useFirebase();
+
+// }

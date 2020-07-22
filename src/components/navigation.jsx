@@ -38,7 +38,7 @@ export const Navigation = () => {
             <div className='font-ubuntu fs-20 lh-23 bold c-primary'>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</div>
             {location.pathname === '/' &&
             <Button className='font-ubuntu fs-20 lh-23 bold c-default ph-4 ml-4 b-primary' onClick={toLogin} id='test'>Нэвтрэх</Button>}
-            <div>{user ? displayName : 'lolol'}</div>
+            <div>{user ? displayName : ''}</div>
         </div>
     </>);
 };

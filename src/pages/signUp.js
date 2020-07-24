@@ -25,8 +25,6 @@ export const SignUp = () => {
         return () => subsribe();
     }, [])
 
-    
-
     const signUp = async () => {
         console.log(state);
         let uid = await firebase.auth(app).createUserWithEmailAndPassword(state.email, state.password).then((auth) => auth.user.uid);
@@ -35,7 +33,7 @@ export const SignUp = () => {
             displayName: state.name,
             email: state.email
         })
-        console.log(haha.displayName)
+
     }
 
     useEffect(() => {

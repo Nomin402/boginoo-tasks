@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HomeDefault, Login, SignUp, PassRecover, Shortener } from './pages';
+import { HomeDefault, Login, SignUp, PassRecover, Shortener, History } from './pages';
 import {
     BrowserRouter as Router,
     Switch,
@@ -25,6 +25,9 @@ const App = () => {
                     </Route>
                     <Route path="/passRecover" exact>
                         <PassRecover />
+                    </Route>
+                    <Route path="/history" exact>
+                        <History />
                     </Route>
                     <Route path="*">
                         <Shortener />

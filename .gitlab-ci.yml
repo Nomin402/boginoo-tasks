@@ -8,8 +8,8 @@ install:
   stage: build
   script:  
     - npm install 
-    - npm run build
+    - CI=false && npm run build
     - echo 'finish running'
-    - npm firebase install
+    - npm install firebase
     - firebase deploy --token
   

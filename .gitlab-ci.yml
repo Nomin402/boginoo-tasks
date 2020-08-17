@@ -9,6 +9,7 @@ install:
   script:  
     - npm install 
     - npm run build
+    - echo 'finish running'
     - npm firebase install
     - firebase deploy --token
   

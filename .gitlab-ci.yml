@@ -9,6 +9,6 @@ install:
   script:  
     - npm install 
     - npm run build
-    - firebase install 
+    - npm firebase install
     - firebase deploy --token
   

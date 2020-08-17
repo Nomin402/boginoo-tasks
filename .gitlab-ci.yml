@@ -1,0 +1,19 @@
+image: node
+
+stage: 
+  - build 
+  - deploy
+
+install:
+  stage: build
+  script:  
+    - npm install 
+    - npm run build
+  artifacts:
+    paths: build/
+
+run: 
+  stage: deploy
+  script: 
+    - firebase deploy 
+  
